@@ -1,11 +1,12 @@
-import Page from './Pages/Page'
+import Layout from './Layout/MainLayout';
+import ErrorBoundary from './Utils/ErrorBoundary';
 
 function App() {
+    
     return (
-        // <Router>
-        //     <Routers />
-        // </Router>
-        <Page />
+        <ErrorBoundary>
+            <Layout />
+        </ErrorBoundary>
     );
 }
 
