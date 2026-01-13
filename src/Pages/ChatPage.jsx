@@ -5,6 +5,14 @@ import { getAIResponse } from '../Utils/ai';
 const ChatPage = ({ convo, setConvo }) => {
     const [query, setQuery] = useState('');
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter' && e.shiftKey) {
+            setQuery(query + '\n');
+        } else if (e.key === 'Enter' && query !== '') {
+            handleClick();
+        }
+    }
+
     const handleClick = async () => {
         const id = crypto.randomUUID();
         setConvo(convo => [...convo, {id: id, ques: query}]);
@@ -22,7 +30,7 @@ const ChatPage = ({ convo, setConvo }) => {
 
             <section className="chat-prompt">
                 <div className="prompt-box">
-                    <input type="text" id="prompt" className="prompt" placeholder="Ask Your Queries" autoComplete="false" value={query} onChange={(e) => setQuery(e.target.value)} />
+                    <input type="text" id="prompt" onKeyDown={handleKeyDown} className="prompt" placeholder="Ask Your Queries" autoComplete="false" value={query} onChange={(e) => setQuery(e.target.value)} />
                     <button className="send-btn" onClick={handleClick} disabled={query === ''}><span className="fa fa-arrow-up"></span></button>
                 </div>
             </section>

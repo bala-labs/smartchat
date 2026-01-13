@@ -17,7 +17,6 @@ const Conversation = ({ conversations }) => {
         bottomRef.current?.scrollIntoView({
             "behaviour": "smooth"
         });
-        console.log(conversations);
     }, [conversations]);
 
     return (
@@ -29,10 +28,10 @@ const Conversation = ({ conversations }) => {
                             <p>{convo.ques}</p>
                         </div>
                         <div className={`answer ${conversations.length - 1 === ind && "new"}`}>
-                            <pre key={convo.ans}>{convo.ans ? convo.ans : "Loading..."}</pre>
+                            <pre key={convo.ans}>{convo.ans ? convo.ans : <div className='message spinner'><div className="loading"></div>Loading</div>}</pre>
                         </div>
                     </div>
-                )) : <p className="empty">Start Conversation</p>}
+                )) : <p className="message empty">Engage in a new Conversation</p>}
                 <div ref={bottomRef}></div>
             </div>
             {
