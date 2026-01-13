@@ -147,7 +147,27 @@ main {
     outline: none;
 }
 
-.send-btn, .delete-btn {
+.delete-btn {
+    border: none;
+    font-size: 1.5rem;
+    background: transparent;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    color: rgb(232, 19, 19);
+}
+
+.delete-btn:disabled {
+    cursor: not-allowed;
+    color: #a9a9a9
+}
+
+.delete-btn:disabled:hover {
+    color: #a9a9a9;
+}
+
+.send-btn {
     padding: 0.5rem 0.6rem;
     border-radius: 50%;
     border: none;
@@ -156,7 +176,7 @@ main {
     cursor: pointer;
 }
 
-.send-btn:disabled, .delete-btn:disabled {
+.send-btn:disabled {
     cursor: not-allowed;
     background: #ccc;
 }
